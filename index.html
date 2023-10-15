@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Simple Framework for End-to-End Predictive Visual Tracking">
+  <meta name="keywords" content="Visual Object Tracking, Online, Latency-Aware Perception">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PVTpp</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+  <link rel="icon" type="image/png" href="./static/images/airlab.png"> 
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/airlab.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://jaraxxus-me.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://ieeexplore.ieee.org/document/9561564">
+            ADTrack - ICRA 2021
+          </a>
+          <a class="navbar-item" href="https://jaraxxus-me.github.io/ECCV2022_AirDet">
+            AirDet - ECCV 2022
+          </a>
+          <a class="navbar-item" href="https://openaccess.thecvf.com/content/ICCV2021/papers/Cao_HiFT_Hierarchical_Feature_Transformer_for_Aerial_Tracking_ICCV_2021_paper.pdf">
+            HiFT - ICCV 2021
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><img src="./static/images/clock1.svg" width="40">&nbspPVT++&nbsp;<img src="./static/images/clock2.svg" width="40">&nbsp;</h1>
+          <h1 class="title is-2 publication-title">A Simple Framework for End-to-End Predictive Visual Tracking</h1>
+          <div class="column is-full_width">
+            <h2 class="title is-3">ICCV 2023</h2>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jaraxxus-me.github.io/">Bowen Li</a><sup>1,*</sup>,</span>
+            <span class="author-block">
+              <a href="https://huang-ziyuan.github.io/">Ziyuan Huang</a><sup>2,*</sup>,</span>
+            <span class="author-block">
+              <a href="https://jay-ye.github.io/">Junjie Ye</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/yiming-li-58b519173/">Yiming Li</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://theairlab.org/team/sebastian/">Sebastian Scherer</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://hangzhaomit.github.io/">Hang Zhao</a><sup>5</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://www.researchgate.net/profile/Changhong-Fu">Changhong Fu</a><sup>3</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Carnegie Mellon University</span>,<span class="author-block"><sup>2</sup>National University of Singapore</span>,<span class="author-block"><sup>3</sup>Tongji University</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>4</sup>New York University</span>, <span class="author-block"><sup>5</sup>Tsinghua University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Li_PVT_A_Simple_End-to-End_Latency-Aware_Visual_Tracking_Framework_ICCV_2023_paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2211.11629"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=feXX_HEXKf8"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Jaraxxus-Me/PVT_pp"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/Jaraxxus-Me/AirDet"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span> -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/Jaraxxus-Me/AirDet_ROS"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-robot"></i>
+                  </span>
+                  <span>ROS</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://zhuanlan.zhihu.com/p/643835478"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-blog"></i>
+                  </span>
+                  <span>Blog</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div style="text-align:center;">
+        <img src="static\images\teaser.png" style="width:75%; height:auto;">
+      </div>
+      <!-- <img class="rounded" src="./media/nice-slam/teaser.png" > -->
+      <br>
+      <h2 class="subtitle has-text-centered">
+        <strong>PVT++</strong> is motivated by onboard latency of visual trackers. By virtue of <b>end-to-end joint learning of motion and visual cues</b>, PVT++ achieves <b>online</b> results that is comparable to <b>offline</b> setting!
+      </h2>
+    </div>
+    <!--         <iframe width="800" height="400" src="https://www.youtube.com/embed/ycivCw1LmdE?si=zstMsf33Lgjytup5" title="Intro to PVT++" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+ -->
+    <div class="hero-body">
+      <div style="text-align:center;">
+        <iframe width="700" height="430" src="https://www.youtube.com/embed/feXX_HEXKf8?si=P0b5NKmd18_Vt8V3" title="Intro to PVT++" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+        <!-- Paper video. -->
+        <!-- <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Video</h2>
+            <div class="publication-video">
+              <iframe src="https://www.youtube.com/embed/V5hYTz5os0M?rel=0&amp;showinfo=0"
+                      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div> -->
+        <!--/ Paper video. -->
+      
+    <!-- <br> -->
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Visual object tracking is essential to intelligent robots. 
+            Most existing approaches have ignored the <b>online latency</b> that can cause severe performance degradation during real-world processing.
+            Especially for unmanned aerial vehicles (UAVs), where robust tracking is more challenging and onboard computation is limited, the latency issue can be fatal.
+          </p>
+          <p>
+            In this work, we present a simple framework for <b>end-to-end latency-aware tracking</b>, end-to-end predictive visual tracking (PVT++). 
+            Unlike existing solutions that naively append Kalman Filters after trackers, PVT++ can be jointly optimized, so that it takes not only motion information but can also leverage the rich visual knowledge in most pre-trained tracker models for robust prediction.
+          </p>
+          <p>
+            Besides, to bridge the training-evaluation domain gap, we propose a <b>relative motion factor</b>, empowering PVT++ to generalize to the challenging and complex UAV tracking scenes.
+            These careful designs have made the small-capacity lightweight PVT++ a widely effective solution.
+          </p>
+          <p>
+            Additionally, this work presents an <b>extended latency-aware evaluation benchmark</b> for assessing an <i>any-speed</i> tracker in the online setting. 
+            Empirical results on a robotic platform from the aerial perspective show that PVT++ can achieve significant performance gain on various trackers and exhibit higher accuracy than prior solutions, largely mitigating the degradation brought by latency. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- <br> -->
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Contribution</h2>
+        <div class="content has-text-justified">
+          <li>
+            We propose the first end-to-end general framework, PVT++, for latency-aware tracking, compensating for online latency by accurate motion prediction.
+          </li>
+          <li>
+            We propose "<b>relative motion factor</b>", bridging the training-evaluation domain gap.
+          </li>
+          <li>
+            We propose "<b>auxiliary branch</b>" and "<b>joint training</b>" techniques to effectively incorperate pre-exsiting visual features in prediction.
+          </li>
+          <li>
+            We propose "<b>e-LAE</b>" to evaluate an <i>any-speed</i> tracker in the online setting.
+          </li>
+          <li>
+            We conduct exhaustive experiments, using "<b>e-LAE</b>" to evaluate various SOTA trackers and validate PVT++ on several tracker models.
+          </li>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <hr>
+        <h2 class="title is-3">Method</h2>
+        <br>
+        <div style="text-align:center;">
+          <img src="static\images\method.png" style="width:80%; height:auto;">
+        </div>
+          <br>  
+          <h2 class="subtitle has-text-centered">
+            (a) Structure of PVT++, consisting of tracker and predictior.
+            (b) Extended latency-aware benchmark.
+          </h2>
+          <br>
+        <h3 class="title is-4">e-LAE</h3>
+        <div class="content has-text-justified">
+          <p>LAE sets two policies for online evaluation of trackers:
+            <li>
+              During inference, the tracker finds the <b>latest</b> frame to process when finishing the previous one.
+            </li>
+            <li>
+              During evaluation, the ground-truth is compared with the <b>latest</b> result from the tracker at the world time stampn.
+            </li>
+            However, this fall shorts when evaluating real-time trackers, since <b>the latency is always 1 frame</b>, <span
+            class="math inline"><em>ϕ</em>(<em>f</em>) ≡ <em>f</em> − 1</span>.
+          </p>
+          
+          <p>
+            e-LAE sets permitted latency threshold <span class="math inline"><em>σ</em></span>, instead of hard requiring the <b>latest</b> result. 
+            By setting different thresholds <span class="math inline"><em>σ</em> ∈ [0, 1)</span>, we get a curve for the online results. 
+            e-LAE finally takes the aera under curve for the final comparing results.
+            Since different real-time trackers have distinct latency, the thresholds can distinguish between them.
+          </p>
+          <p>
+            We have conducted exhaustive experiments using robot platform and e-LAE here:
+          </p>
+          <img src="static\images\elae.svg" class="center"/>
+        </div>
+
+        <h3 class="title is-4">PVT++</h3>
+        <div class="content has-text-justified">
+          <p>
+            PVT++ consists of a tracker module and predictor module. The critical designs are:
+            <li>
+              <b>Relative motion factor</b>: the training objective needs to be carefully designed to enable a generalizable framework.
+            </li>
+            <div style="text-align:center;">
+              <img src="static\images\eqn4.png" style="width:70%; height:auto;">
+            </div>
+            here our predictor is trying to output "adjustment" on "average speed motion" assumption.
+          </p>
+          <p>
+            <li>
+              <b>Lightweight structure</b>: The predictor module is carefully designed as below to avoid extra latency:
+            </li>
+            <br>
+            <div style="text-align:center;">
+              <img src="static\images\pred.png" style="width:70%; height:auto;">
+            </div>
+          </p>
+          <p>
+            <li>
+            <b>Optimizing techniques</b>: We develop joint training and auxiliary branch as techniques to utilize <b>pre-existing</b> tracker visual features.
+            </li>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    
+    <!-- Applications.-->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <h2 class="title is-3">Qualitative&nbsp;&nbsp;Results</h2>
+      </div>
+    </div>
+    <p>
+      &nbsp
+    </p>
+    <h3 class="title is-4">Effect on Traditional Base Trackers</h3>
+    <div style="text-align:center;">
+      <img src="static\images\cap_baset.png" style="width:70%; height:auto;">
+    </div>
+   <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+      <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 50%;">
+          <source src="./static/images/baset_1.mp4" type="video/mp4">
+      </video>
+
+      <video id="teaser2" autoplay muted loop style="flex: 50%; max-width: 50%;">
+          <source src="./static/images/baset_2.mp4" type="video/mp4">
+      </video>
+
+      <video id="teaser3" autoplay muted loop style="flex: 50%; max-width: 50%;">
+          <source src="./static/images/baset_3.mp4" type="video/mp4">
+      </video>
+
+      <video id="teaser4" autoplay muted loop style="flex: 50%; max-width: 50%;">
+          <source src="./static/images/baset_4.mp4" type="video/mp4">
+      </video>
+  </div>
+  <h2 class="subtitle has-text-centered">
+    The base trackers are easy to lose the target object due to latency. Powered by PVT++, the predictive trackers is more accurate.
+  </h2>
+
+    <p>
+      &nbsp
+    </p>
+    <p>
+      &nbsp
+    </p>
+    <h3 class="title is-4">Comparison with KF</h3>
+    <div style="text-align:center;">
+      <img src="static\images\cap_kf.png" style="width:80%; height:auto;">
+    </div>
+   <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+      <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 50%;">
+          <source src="./static/images/kft_1.mp4" type="video/mp4">
+      </video>
+
+      <video id="teaser2" autoplay muted loop style="flex: 50%; max-width: 50%;">
+          <source src="./static/images/kft_2.mp4" type="video/mp4">
+      </video>
+
+      <video id="teaser3" autoplay muted loop style="flex: 50%; max-width: 50%;">
+          <source src="./static/images/kft_3.mp4" type="video/mp4">
+      </video>
+
+      <video id="teaser4" autoplay muted loop style="flex: 50%; max-width: 50%;">
+          <source src="./static/images/kft_4.mp4" type="video/mp4">
+      </video>
+  </div>
+
+  <h2 class="subtitle has-text-centered">
+    Kalman filters fall short in in-plane-rotation and view-point change, thus causing the predictive trackers to fail. While our PVT++ is more robust under these challenges due to the incoorperation of visual cues.
+  </h2>
+   
+</div>
+</section>
+
+
+
+<section class="section" >
+  <div class="container is-max-desktop content">
+    <h1 class="title">BibTeX</h1>
+    <pre><code>@inproceedings{Li2023iccv,       
+      author={Li, Bowen and Huang, Ziyuan and Ye, Junjie and Li, Yiming and Scherer, Sebastian and Zhao, Hang and Fu, Changhong},   
+      booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)}, 
+      title={{PVT++: A Simple End-to-End Latency-Aware Visual Tracking Framework}},
+      year={2023},
+      volume={},
+      number={},
+      pages={1-18}
+    }</code></pre>
+  </div>
+</section>
+
+
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h1 class="title">Acknowledgements</h1>
+    The work was done when Bowen Li and Ziyuan Huang were visiting students in the MARS Lab at Shanghai Qizhi Institute.
+    The authors would like to express gratitude to the developers and authors of PySot and "Towards Streaming Perception".
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+          </p>
+        </div>
+      </div>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
