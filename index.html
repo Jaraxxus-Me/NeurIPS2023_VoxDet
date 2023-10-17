@@ -372,62 +372,38 @@
     <p>
       &nbsp
     </p>
-    <h3 class="title is-4">Effect on Traditional Base Trackers</h3>
-    <div style="text-align:center;">
-      <img src="static\images\cap_baset.png" style="width:70%; height:auto;">
+    <h3 class="title is-4">Comparison with Gen6D</h3>
+    <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
+        <source src="./static/images/Comp_Gen6d.mp4" type="video/mp4">
+    </video>
     </div>
-   <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-      <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 50%;">
-          <source src="./static/images/baset_1.mp4" type="video/mp4">
-      </video>
-
-      <video id="teaser2" autoplay muted loop style="flex: 50%; max-width: 50%;">
-          <source src="./static/images/baset_2.mp4" type="video/mp4">
-      </video>
-
-      <video id="teaser3" autoplay muted loop style="flex: 50%; max-width: 50%;">
-          <source src="./static/images/baset_3.mp4" type="video/mp4">
-      </video>
-
-      <video id="teaser4" autoplay muted loop style="flex: 50%; max-width: 50%;">
-          <source src="./static/images/baset_4.mp4" type="video/mp4">
-      </video>
-  </div>
-  <h2 class="subtitle has-text-centered">
-    The base trackers are easy to lose the target object due to latency. Powered by PVT++, the predictive trackers is more accurate.
-  </h2>
+    <h2 class="subtitle has-text-centered">
+      Gen6D falls short when the instance is in unseen poses or occluded.
+    </h2>
 
     <p>
       &nbsp
     </p>
+    <h3 class="title is-4">Comparison with DTOID</h3>
+    <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
+        <source src="./static/images/Comp_DTOID.mp4" type="video/mp4">
+    </video>
+    </div>
+    <h2 class="subtitle has-text-centered">
+      DTOID can't handel complex backgrounds very well.
+    </h2>
+
     <p>
       &nbsp
     </p>
-    <h3 class="title is-4">Comparison with KF</h3>
-    <div style="text-align:center;">
-      <img src="static\images\cap_kf.png" style="width:80%; height:auto;">
+    <h3 class="title is-4">Comparison with OLN_DINO</h3>
+    <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
+        <source src="./static/images/Comp_OLN.mp4" type="video/mp4">
+    </video>
     </div>
-   <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-      <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 50%;">
-          <source src="./static/images/kft_1.mp4" type="video/mp4">
-      </video>
-
-      <video id="teaser2" autoplay muted loop style="flex: 50%; max-width: 50%;">
-          <source src="./static/images/kft_2.mp4" type="video/mp4">
-      </video>
-
-      <video id="teaser3" autoplay muted loop style="flex: 50%; max-width: 50%;">
-          <source src="./static/images/kft_3.mp4" type="video/mp4">
-      </video>
-
-      <video id="teaser4" autoplay muted loop style="flex: 50%; max-width: 50%;">
-          <source src="./static/images/kft_4.mp4" type="video/mp4">
-      </video>
-  </div>
-
-  <h2 class="subtitle has-text-centered">
-    Kalman filters fall short in in-plane-rotation and view-point change, thus causing the predictive trackers to fail. While our PVT++ is more robust under these challenges due to the incoorperation of visual cues.
-  </h2>
+    <h2 class="subtitle has-text-centered">
+      OLN_DINO has trouble distinguishing instances that have similar semantics.
+    </h2>
    
 </div>
 </section>
