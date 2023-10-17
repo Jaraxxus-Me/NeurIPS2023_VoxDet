@@ -85,7 +85,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title"><img src="./static/images/title.png" width="400"></h1>
+          <img src="./static/images/title.png" width="400">
           <h1 class="title is-2 publication-title">Voxel Learning for Novel Instance Detection</h1>
           <div class="column is-full_width">
             <h2 class="title is-3">NeurIPS SpotLight</h2>
@@ -183,19 +183,31 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div style="text-align:center;">
-        <img src="static\images\teaser.png" style="width:75%; height:auto;">
+        <img src="static\images\teaser.png" style="width:100%; height:auto;">
       </div>
       <!-- <img class="rounded" src="./media/nice-slam/teaser.png" > -->
       <br>
       <h2 class="subtitle has-text-centered">
-        <strong>PVT++</strong> is motivated by onboard latency of visual trackers. By virtue of <b>end-to-end joint learning of motion and visual cues</b>, PVT++ achieves <b>online</b> results that is comparable to <b>offline</b> setting!
+        <strong>VoxDet</strong> is a pioneer 3D voxel inspired detection framework, it detects <b>Any Novel Instance</b> by encoding both the multi-view appearances and rotation-inviriant geometry.
+      </h2>
+    </div>
+    <div class="hero-body">
+      <div style="text-align:center;">
+        <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
+          <source src="./static/images/RoboTools.mp4" type="video/mp4">
+      </video>
+      </div>
+      <!-- <img class="rounded" src="./media/nice-slam/teaser.png" > -->
+      <br>
+      <h2 class="subtitle has-text-centered">
+        <strong>RoboTools</strong> is a new benchmark for <b>Novel Instance Detection</b>.
       </h2>
     </div>
     <!--         <iframe width="800" height="400" src="https://www.youtube.com/embed/ycivCw1LmdE?si=zstMsf33Lgjytup5" title="Intro to PVT++" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
  -->
     <div class="hero-body">
       <div style="text-align:center;">
-        <iframe width="700" height="430" src="https://www.youtube.com/embed/feXX_HEXKf8?si=P0b5NKmd18_Vt8V3" title="Intro to PVT++" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="700" height="430" src="https://www.youtube.com/embed/feXX_HEXKf8?si=P0b5NKmd18_Vt8V3" title="Intro to VoxDet" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 </section>
@@ -221,21 +233,24 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Visual object tracking is essential to intelligent robots. 
-            Most existing approaches have ignored the <b>online latency</b> that can cause severe performance degradation during real-world processing.
-            Especially for unmanned aerial vehicles (UAVs), where robust tracking is more challenging and onboard computation is limited, the latency issue can be fatal.
+            Detecting unseen instances based on multi-view templates is a challenging problem due to its open-world nature. Traditional methodologies, which primarily rely on 2D representations and matching techniques, are often inadequate in handling pose variations and occlusions.
           </p>
           <p>
-            In this work, we present a simple framework for <b>end-to-end latency-aware tracking</b>, end-to-end predictive visual tracking (PVT++). 
-            Unlike existing solutions that naively append Kalman Filters after trackers, PVT++ can be jointly optimized, so that it takes not only motion information but can also leverage the rich visual knowledge in most pre-trained tracker models for robust prediction.
+            To solve this, we introduce VoxDet, a pioneer 3D geometry-aware framework that fully utilizes the strong 3D voxel representation and reliable voxel matching mechanism. 
+            VoxDet first ingeniously proposes template voxel aggregation (TVA) module, effectively transforming multi-view 2D images into 3D voxel features. By leveraging associated camera poses, these features are aggregated into a compact 3D template voxel. 
+            In novel instance detection, this voxel representation demonstrates heightened resilience to occlusion and pose variations. 
+            We also discover that a 3D reconstruction objective helps to pre-train the 2D-3D mapping in TVA. 
           </p>
           <p>
-            Besides, to bridge the training-evaluation domain gap, we propose a <b>relative motion factor</b>, empowering PVT++ to generalize to the challenging and complex UAV tracking scenes.
-            These careful designs have made the small-capacity lightweight PVT++ a widely effective solution.
+            Second, to quickly align with the template voxel, VoxDet incorporates a Query Voxel Matching (QVM) module. The 2D queries are first converted into their voxel representation with the learned 2D-3D mapping. We find that since the 3D voxel representations encode the geometry, we can first estimate the relative rotation and then compare the aligned voxels, leading to improved accuracy and efficiency.
           </p>
           <p>
-            Additionally, this work presents an <b>extended latency-aware evaluation benchmark</b> for assessing an <i>any-speed</i> tracker in the online setting. 
-            Empirical results on a robotic platform from the aerial perspective show that PVT++ can achieve significant performance gain on various trackers and exhibit higher accuracy than prior solutions, largely mitigating the degradation brought by latency. 
+            In addition to method, we also introduce the first instance detection benchmark, RoboTools, where 20 unique instances are video-recorded with camera extrinsic.
+            RoboTools also provides 24 challenging cluttered scenarios with more than 9k box annotations.
+          </p>
+          <p>
+            Exhaustive experiments are conducted on the demanding LineMod-Occlusion, YCB-video, and RoboTools benchmarks, where VoxDet outperforms various 2D baselines remarkably with faster speed. 
+            To the best of our knowledge, VoxDet is the first to incorporate implicit 3D knowledge for 2D novel instance detection tasks.
           </p>
         </div>
       </div>
