@@ -88,7 +88,7 @@
           <img src="./static/images/title.png" width="300">
           <h1 class="title is-2 publication-title">Voxel Learning for Novel Instance Detection</h1>
           <div class="column is-full_width">
-            <h2 class="title is-3">NeurIPS SpotLight</h2>
+            <h2 class="title is-3">NeurIPS'23 SpotLight</h2>
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -233,10 +233,11 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Detecting unseen instances based on multi-view templates is a challenging problem due to its open-world nature. Traditional methodologies, which primarily rely on 2D representations and matching techniques, are often inadequate in handling pose variations and occlusions.
+            Detecting unseen instances based on multi-view templates is a challenging problem due to its open-world nature. 
+            Traditional methodologies, which primarily rely on 2D representations and matching techniques, are often inadequate in handling <b>pose variations and occlusions</b>.
           </p>
           <p>
-            To solve this, we introduce VoxDet, a pioneer 3D geometry-aware framework that fully utilizes the strong 3D voxel representation and reliable voxel matching mechanism. 
+            To solve this, we introduce VoxDet, a pioneer 3D geometry-aware framework that fully utilizes the strong <b>3D voxel representation</b> and reliable <b>voxel matching</b> mechanism. 
             VoxDet first ingeniously proposes template voxel aggregation (TVA) module, effectively transforming multi-view 2D images into 3D voxel features. By leveraging associated camera poses, these features are aggregated into a compact 3D template voxel. 
             In novel instance detection, this voxel representation demonstrates heightened resilience to occlusion and pose variations. 
             We also discover that a 3D reconstruction objective helps to pre-train the 2D-3D mapping in TVA. 
@@ -245,7 +246,7 @@
             Second, to quickly align with the template voxel, VoxDet incorporates a Query Voxel Matching (QVM) module. The 2D queries are first converted into their voxel representation with the learned 2D-3D mapping. We find that since the 3D voxel representations encode the geometry, we can first estimate the relative rotation and then compare the aligned voxels, leading to improved accuracy and efficiency.
           </p>
           <p>
-            In addition to method, we also introduce the first instance detection benchmark, RoboTools, where 20 unique instances are video-recorded with camera extrinsic.
+            In addition to method, we also introduce <b>first instance detection benchmark, RoboTools</b>, where 20 unique instances are video-recorded with camera extrinsic.
             RoboTools also provides 24 challenging cluttered scenarios with more than 9k box annotations.
           </p>
           <p>
@@ -268,19 +269,18 @@
         <h2 class="title is-3">Contribution</h2>
         <div class="content has-text-justified">
           <li>
-            We propose the first end-to-end general framework, PVT++, for latency-aware tracking, compensating for online latency by accurate motion prediction.
+            We propose the first 3D-geometry aware instance detector, VoxDet, which identifies any (novel) specifc instance in the wild.
+          <li>
+            We develop <b>Template Voxel Aggregation</b> and <b>Query Voxel Matching</b> mechanisms to represent and match instances, respectively.
           </li>
           <li>
-            We propose "<b>relative motion factor</b>", bridging the training-evaluation domain gap.
+            We discover that via <b>reconstruction pre-training</b>, the Voxel representation is much stronger and more generalizable.
           </li>
           <li>
-            We propose "<b>auxiliary branch</b>" and "<b>joint training</b>" techniques to effectively incorperate pre-exsiting visual features in prediction.
+            We compile the first novel instance detection benchmark <b>RoboTools</b> for evaluation and synthetic training set <b>OWID</b>, which are all publicly awailable.
           </li>
           <li>
-            We propose "<b>e-LAE</b>" to evaluate an <i>any-speed</i> tracker in the online setting.
-          </li>
-          <li>
-            We conduct exhaustive experiments, using "<b>e-LAE</b>" to evaluate various SOTA trackers and validate PVT++ on several tracker models.
+            We conduct exhaustive experiments to validate the generalization capability and robustness of VoxDet against vairous traditional 2D models.
           </li>
         </div>
       </div>
