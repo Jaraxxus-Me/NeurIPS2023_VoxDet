@@ -301,10 +301,10 @@
         <div class="content has-text-justified">
           <img src="static\images\Structure.png" class="center"/>
           <p>VoxDet consists of 3 main modules:
-            
+            <li><b>Open-World Detection Module</b>: Takes in an arbitary image and outputs open-world proposals that cover all potential objects. We obtain the 2D proposal feature (ROI) to be matched.</li>
+            <li><b>Template Voxel Aggregation Module</b>: Consumes the multi-view reference images (and cooresponding camera extrinsic) as input, then construct a compact template voxel via the geometric relationship between each frame.</li>
+            <li><b>Query Voxel Matching Module</b>: Matches the template voxel with each proposal by 2D-3D mapping and voxel repation. We find such matching is tailored for instances and robust to pose variations.</li>
           </p>
-          
-          
         </div>
 
         <h3 class="title is-4">Two Stage Training</h3>
@@ -314,6 +314,11 @@
               <source src="./static/images/two_stage.mp4" type="video/mp4">
           </video>
           <p>
+          <p>We discover that two-stage training mechanism helps VoxDet learn the geometry of an instance and generalize better:
+            <li><b>Stage 1 Reconstruction</b>: The 2D-3D mapping needs to construct 3D voxel from 2D image features, we discover that this module needs to be pre-trained via reconstruction objective.</li>
+            <li><b>Stage 2 Detection</b>: We first initialize the 2D-3D mapping blocks in TVA and QVM, then we used a smaller learning rate to learn the voxel representation tailored for detection task.</li>
+            <li><b>(Optional) Stage 3 Rotation estimation</b>: The rotation measurement in QVM can have additional supervision, which slightly improves performance and is optional.</li>
+          </p>
         </div>
       </div>
     </div>
