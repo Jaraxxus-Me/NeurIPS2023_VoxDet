@@ -299,55 +299,21 @@
         <br>
         <h3 class="title is-4">Model Structure</h3>
         <div class="content has-text-justified">
-          <p>LAE sets two policies for online evaluation of trackers:
-            <li>
-              During inference, the tracker finds the <b>latest</b> frame to process when finishing the previous one.
-            </li>
-            <li>
-              During evaluation, the ground-truth is compared with the <b>latest</b> result from the tracker at the world time stampn.
-            </li>
-            However, this fall shorts when evaluating real-time trackers, since <b>the latency is always 1 frame</b>, <span
-            class="math inline"><em>ϕ</em>(<em>f</em>) ≡ <em>f</em> − 1</span>.
+          <img src="static\images\Structure.png" class="center"/>
+          <p>VoxDet consists of 3 main modules:
+            
           </p>
           
-          <p>
-            e-LAE sets permitted latency threshold <span class="math inline"><em>σ</em></span>, instead of hard requiring the <b>latest</b> result. 
-            By setting different thresholds <span class="math inline"><em>σ</em> ∈ [0, 1)</span>, we get a curve for the online results. 
-            e-LAE finally takes the aera under curve for the final comparing results.
-            Since different real-time trackers have distinct latency, the thresholds can distinguish between them.
-          </p>
-          <p>
-            We have conducted exhaustive experiments using robot platform and e-LAE here:
-          </p>
-          <img src="static\images\elae.svg" class="center"/>
+          
         </div>
 
-        <h3 class="title is-4">PVT++</h3>
+        <h3 class="title is-4">Two Stage Training</h3>
         <div class="content has-text-justified">
           <p>
-            PVT++ consists of a tracker module and predictor module. The critical designs are:
-            <li>
-              <b>Relative motion factor</b>: the training objective needs to be carefully designed to enable a generalizable framework.
-            </li>
-            <div style="text-align:center;">
-              <img src="static\images\eqn4.png" style="width:70%; height:auto;">
-            </div>
-            here our predictor is trying to output "adjustment" on "average speed motion" assumption.
-          </p>
+            <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
+              <source src="./static/images/two_stage.mp4" type="video/mp4">
+          </video>
           <p>
-            <li>
-              <b>Lightweight structure</b>: The predictor module is carefully designed as below to avoid extra latency:
-            </li>
-            <br>
-            <div style="text-align:center;">
-              <img src="static\images\pred.png" style="width:70%; height:auto;">
-            </div>
-          </p>
-          <p>
-            <li>
-            <b>Optimizing techniques</b>: We develop joint training and auxiliary branch as techniques to utilize <b>pre-existing</b> tracker visual features.
-            </li>
-          </p>
         </div>
       </div>
     </div>
